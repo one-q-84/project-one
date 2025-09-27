@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FFVII Mood Selector</title>
+    <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://use.typekit.net/wps8cma.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Question Section -->
+        <div id="questionSection" class="question-section">
+            <h1>How are you feeling today?</h1>
+            <div class="buttons-container">
+                <img src="green-crystal.png" class="crystal-btn" data-mood="mako" alt="Crystal 1">
+                <img src="diamond-crystal.png" class="crystal-btn" data-mood="serene" alt="Crystal 2">
+                <img src="golden-crystal.png" class="crystal-btn" data-mood="cheerful" alt="Crystal 3">
+            </div>
+        </div>
+
+        <!-- Result Section -->
+        <div id="resultSection" class="result-section">
+            <div class="character-container">
+                <img id="characterImg" class="character-img" src="" alt="Character">
+            </div>
+            <div class="quote-container">
+                <div id="quote" class="quote"></div>
+                <div id="characterName" class="character-name"></div>
+            </div>
+            <button id="restartBtn" class="restart-orb">
+                <img src="blue-materia.png" alt="Restart">
+            </button>
+        </div>
+    </div>
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="prelude.mp3" type="audio/mpeg">
+    </audio>
+
+<!-- Mute Button -->
+    <button id="muteBtn" class="mute-btn">🔊</button>
+    <script src="app.js"></script>
+</body>
+</html>
