@@ -1,4 +1,3 @@
-/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -28,7 +27,7 @@ body {
 /* Question Section */
 .question-section {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0); /* used for fade-out section */
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
 }
@@ -53,10 +52,10 @@ h1 {
     animation: slideInDown 0.8s ease-out;
 }
 
-/* Crystal buttons */
+/* Crystal buttons on 'homepage' */
 .buttons-container {
     display: flex;
-    flex-direction: row; /* horizontal layout */
+    flex-direction: row; /* horizontal instead of vertical */
     gap: 2rem;
     justify-content: center;
     margin-top: 2rem;
@@ -72,6 +71,7 @@ h1 {
     z-index: 1;
 }
 
+/* slight delay in appearance between the three */
 .crystal-btn:nth-child(1) { animation-delay: 0.2s; }
 .crystal-btn:nth-child(2) { animation-delay: 0.4s; }
 .crystal-btn:nth-child(3) { animation-delay: 0.6s; }
@@ -81,7 +81,7 @@ h1 {
     filter: drop-shadow(0 0 15px rgba(173, 216, 230, 0.8));
 }
 
-/* Result Section */
+/* Results of selection */
 .result-section {
     position: absolute;
     top: 50%;
@@ -97,7 +97,7 @@ h1 {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.6s ease, transform 0.6s ease;
-    z-index: 10; /* above everything */
+    z-index: 10; /* order this at the top to make visible */
 }
 
 .result-section.show {
@@ -106,7 +106,7 @@ h1 {
     transform: translate(-50%, -50%) translateY(0);
 }
 
-/* Character */
+/* where character png will appear */
 .character-container {
     display: flex;
     justify-content: center;
@@ -142,7 +142,7 @@ h1 {
     margin-bottom: 0.5rem;
     line-height: 1.4;
 }
-
+/* I know this is technically at transparency zero. but by the time I wanted to remove it from my code I was too tired, and because it's both in HTML and JS the unwinding process felt a bit much. so just making it invisible */
 .character-name {
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.1rem;
@@ -150,7 +150,7 @@ h1 {
     opacity: 0;
 }
 
-/* Restart Orb */
+/* Restart Orb to take you back to home page */
 .restart-orb {
     margin-top: 1rem;
     border: none;
@@ -170,7 +170,7 @@ h1 {
     transform: scale(1.1);
 }
 
-/* Animations */
+/* subtle animations */
 @keyframes slideInDown {
     from { opacity: 0; transform: translateY(-50px); }
     to { opacity: 1; transform: translateY(0); }
@@ -181,13 +181,15 @@ h1 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+/* Responsiveness */
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
     .crystal-btn { width: 50px; }
     .character-img { max-width: 60vw; max-height: 35vh; }
     .quote { font-size: 1.2rem; }
 }
+
+/* audio controls */
 .mute-btn {
     position: fixed;
     top: 20px;
@@ -205,4 +207,5 @@ h1 {
 
 .mute-btn:hover {
     background: rgba(0,0,0,0.7);
+
 }
