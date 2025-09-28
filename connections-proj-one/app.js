@@ -1,3 +1,4 @@
+//variables for character data and second for triggering proper results only after data loaded equals true
 let characterData = {};
 let dataLoaded = false;
 
@@ -23,7 +24,7 @@ fetch('https://raw.githubusercontent.com/one-q-84/ffvii-json/refs/heads/main/ffv
     })
     .catch(err => console.error('Error fetching JSON:', err));
 
-// Handle crystal click
+// treat crystals like clickable buttons
 crystalButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         const mood = e.target.dataset.mood;
@@ -31,10 +32,10 @@ crystalButtons.forEach(button => {
     });
 });
 
-// Restart button
+// Restart button to send us back to 'homepage'
 restartBtn.addEventListener('click', showQuestion);
 
-// Show result section
+// Show result section, if statement to deal with instances of event occuring before data loaded
 function showResult(mood) {
     if (!dataLoaded) {
         alert("Character data is still loading. Please wait.");
@@ -47,13 +48,13 @@ function showResult(mood) {
         return;
     }
 
-    // Update DOM
+    // Update DOM -- here is where action of click translates to finding mapped materials in JSON
     characterImg.src = `/ch-assets/${character.img_sprite}`;
     characterImg.alt = character.name;
     quote.textContent = character.quote;
     characterName.textContent = `- ${character.name}`;
 
-    // Fade out question section, show result
+    // after click, fade out question section and show result 
     questionSection.classList.add('fade-out');
     setTimeout(() => {
         resultSection.classList.add('show');
@@ -66,6 +67,7 @@ function showQuestion() {
     questionSection.classList.remove('fade-out');
 }
 
+//music volume
 bgMusic.volume = 0.1;
 selectSound.volume = 0.4;
 
@@ -82,6 +84,7 @@ muteBtn.addEventListener('click', () => {
     muteBtn.textContent = bgMusic.muted ? '🔇' : '🔊';
 });
 
+//sound effect on click
 crystalButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         selectSound.currentTime = 0;
@@ -89,4 +92,5 @@ crystalButtons.forEach(button => {
         const mood = e.target.dataset.mood;
         showResult(mood);
     });
+
 });
